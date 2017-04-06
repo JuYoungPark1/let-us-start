@@ -21,7 +21,7 @@ public class CalcApp {
     	
     	Deque<String> tempq = new LinkedList();
     	
-    	for(;!(s.isEmpty());){
+    	while(!(s.isEmpty())){
     		
     		String polls = s.poll();
     		
@@ -35,7 +35,7 @@ public class CalcApp {
     		else{
     			if("-".equals(polls)){
     				tempq.add("+");
-    				tempq.add(Double.toString((-Double.parseDouble(s.poll()))));
+    				tempq.add(Double.toString(-Double.parseDouble(s.poll())));
     			}
     			else{
     				tempq.add(polls);
@@ -50,7 +50,7 @@ public class CalcApp {
     	
     	Deque<String> tempq = new LinkedList();
     	
-    	for(;!(s.isEmpty());){
+    	while(!(s.isEmpty())){
     		
     		String polls = s.poll();
     		
@@ -68,15 +68,15 @@ public class CalcApp {
     			tempq.add(polls);
     		}
     	}
-    	for(;!(tempq.size()==1);){
+    	while(tempq.size()!=1){
     		double firstOp;
 			double secondOp;
 			
 			secondOp = Double.parseDouble(tempq.pop());
-			Operator Op = Operator.findOperator(tempq.pop());
+			Operator op = Operator.findOperator(tempq.pop());
 			firstOp = Double.parseDouble(tempq.pop());
 			
-			tempq.push((Double.toString(Op.evaluate(firstOp,secondOp))));
+			tempq.push(Double.toString(op.evaluate(firstOp,secondOp)));
     	}
     	return Double.parseDouble(tempq.pop());
     }
