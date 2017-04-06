@@ -17,7 +17,7 @@ public class CalcApp {
 
     }
     
-    public double gualho(Queue<String> s){
+public double gualho(Queue<String> s){
     	
     	Queue<String> tempq = new LinkedList();
     	
@@ -25,10 +25,10 @@ public class CalcApp {
     		
     		String polls = s.poll();
     		
-    		if(polls.equals("(")){
+    		if(")".equals(polls)){
     			tempq.add(""+ gualho(s) +"");
     		}
-    		else if(polls.equals(")")){
+    		else if("(".equals(polls)){
     			return doudiv(tempq);
     		}
     		else{
@@ -47,7 +47,7 @@ public class CalcApp {
     		
     		String polls = s.poll();
     		
-    		if(polls.equals("*")){
+    		if("*".equals(polls)){
     			double firstOp;
     			double secondOp;
     			
@@ -57,7 +57,7 @@ public class CalcApp {
     			
     			tempq.add(""+Op.evaluate(firstOp,secondOp)+"");
     		}
-    		else if(polls.equals("/")){
+    		else if("/".equals(polls)){
     			double firstOp;
     			double secondOp;
     			
