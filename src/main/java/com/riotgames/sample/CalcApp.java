@@ -51,8 +51,8 @@ public double gualho(Queue<String> s){
     			double firstOp;
     			double secondOp;
     			
-    			firstOp = Double.parseDouble(tempq.poll());
-    			secondOp = Double.parseDouble(s.poll());
+    			firstOp = String.toDouble(tempq.poll());
+    			secondOp = String.toDouble(s.poll());
     			Operator Op = Operator.findOperator(polls);
     			
     			tempq.add(""+Op.evaluate(firstOp,secondOp)+"");
@@ -61,8 +61,8 @@ public double gualho(Queue<String> s){
     			double firstOp;
     			double secondOp;
     			
-    			firstOp = Double.parseDouble(tempq.poll());
-    			secondOp = Double.parseDouble(s.poll());
+    			firstOp = String.toDouble(tempq.poll());
+    			secondOp = String.toDouble(s.poll());
     			Operator Op = Operator.findOperator(polls);
     			
     			tempq.add(""+Op.evaluate(firstOp,secondOp)+"");
@@ -75,13 +75,13 @@ public double gualho(Queue<String> s){
     		double firstOp;
 			double secondOp;
 			
-			secondOp = Double.parseDouble(tempq.poll());
+			secondOp = String.toDouble(tempq.poll());
 			Operator Op = Operator.findOperator(tempq.poll());
-			firstOp = Double.parseDouble(tempq.poll());
+			firstOp = String.toDouble(tempq.poll());
 			
 			tempq.add(""+Op.evaluate(secondOp,firstOp)+"");
     	}
-    	return Double.parseDouble(tempq.poll());
+    	return String.toDouble(tempq.poll());
     }
 
 
