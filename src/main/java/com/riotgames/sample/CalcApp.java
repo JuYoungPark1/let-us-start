@@ -48,7 +48,7 @@ public class CalcApp {
     
     public double doudiv(Queue<String> s){
     	
-    	Stack<String> tempq = new Stack();
+    	Stack<String> tempq = new Deque();
     	
     	for(;!(s.isEmpty());){
     		
