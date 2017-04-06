@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class CalcApp {
 	public double calc(String[] tokens) {
-    	Queue<String> s = new LinkedList();
+    	Deque<String> s = new LinkedList();
     	for(int i = 0 ; i < tokens.length ; i++){
     		s.add(tokens[i]);
     	}
@@ -17,9 +17,9 @@ public class CalcApp {
 
     }
     
-    public double gualho(Queue<String> s){
+    public double gualho(Deque<String> s){
     	
-    	Queue<String> tempq = new LinkedList();
+    	Deque<String> tempq = new LinkedList();
     	
     	for(;!(s.isEmpty());){
     		
@@ -46,29 +46,19 @@ public class CalcApp {
     	return doudiv(tempq);
     }
     
-    public double doudiv(Queue<String> s){
+    public double doudiv(Deque<String> s){
     	
-    	Stack<String> tempq = new Deque();
+    	Deque<String> tempq = new LinkedList();
     	
     	for(;!(s.isEmpty());){
     		
     		String polls = s.poll();
     		
-    		if("x".equals(polls)){
+    		if("x".equals(polls) || "/".equals(polls)){
     			double firstOp;
     			double secondOp;
     			
-    			firstOp = Double.parseDouble(tempq.pop());
-    			secondOp = Double.parseDouble(s.poll());
-    			Operator Op = Operator.findOperator(polls);
-    			
-    			tempq.add(Double.toString(Op.evaluate(firstOp,secondOp)));
-    		}
-    		else if("/".equals(polls)){
-    			double firstOp;
-    			double secondOp;
-    			
-    			firstOp = Double.parseDouble(tempq.pop());
+    			firstOp = Double.parseDouble(tempq.pollLast());
     			secondOp = Double.parseDouble(s.poll());
     			Operator Op = Operator.findOperator(polls);
     			
@@ -86,7 +76,7 @@ public class CalcApp {
 			Operator Op = Operator.findOperator(tempq.pop());
 			firstOp = Double.parseDouble(tempq.pop());
 			
-			tempq.add(Double.toString(Op.evaluate(firstOp,secondOp)));
+			tempq.push((Double.toString(Op.evaluate(firstOp,secondOp))));
     	}
     	return Double.parseDouble(tempq.pop());
     }
